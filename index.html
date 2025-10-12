@@ -119,8 +119,7 @@
             transition: 0.3s;
             cursor: pointer;
             font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.02em;
         }
 
         .btn--primary {
@@ -164,7 +163,7 @@
         }
 
         .hero__title {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 800;
             margin-bottom: 1.5rem;
             line-height: 1.1;
@@ -449,7 +448,7 @@
             }
 
             .hero__title {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
 
             .section__title {
@@ -485,11 +484,12 @@
             </div>
             <ul class="nav__menu" id="navMenu">
                 <li><a href="#services" class="nav__link">Services</a></li>
+                <li><a href="#process" class="nav__link">How It Works</a></li>
                 <li><a href="#about" class="nav__link">About</a></li>
                 <li><a href="#contact" class="nav__link">Contact</a></li>
             </ul>
             <div class="nav__actions">
-                <a href="#contact" class="btn btn--primary">Get Started</a>
+                <a href="#contact" class="btn btn--primary">Free Assessment</a>
                 <button class="nav__toggle" id="navToggle">
                     <span></span>
                     <span></span>
@@ -503,66 +503,117 @@
     <section id="home" class="hero">
         <div class="container">
             <div class="hero__content">
-                <h2 class="hero__title">Enterprise Software Solutions</h2>
-                <p class="hero__subtitle">We deliver high-performance AI automation and software architecture solutions that transform businesses. Trusted by companies across Financial Services, Healthcare, and E-commerce.</p>
+                <h2 class="hero__title">Transform Your Business with AI Automation</h2>
+                <p class="hero__subtitle">Intelligent AI automation and high-performance software architecture for startups, scale-ups, and enterprises. Transform manual processes into automated workflows that save time and reduce costs.</p>
                 <div class="hero__cta">
-                    <a href="#contact" class="btn btn--primary" style="background: rgba(255,255,255,0.2); color: white; font-size: 1rem;">Start Your Project</a>
+                    <a href="#contact" class="btn btn--primary" style="background: rgba(255,255,255,0.2); color: white; font-size: 1rem;">Get Your Free Automation Assessment</a>
                 </div>
                 <div class="hero__stats">
                     <div class="hero__stat">
-                        <span class="hero__stat-number">85%</span>
-                        <span class="hero__stat-label">Automation Rate</span>
+                        <span class="hero__stat-number">40%</span>
+                        <span class="hero__stat-label">Cost Reduction</span>
                     </div>
                     <div class="hero__stat">
-                        <span class="hero__stat-number">99.9%</span>
-                        <span class="hero__stat-label">Uptime</span>
+                        <span class="hero__stat-number">200+</span>
+                        <span class="hero__stat-label">Hours Saved Monthly</span>
                     </div>
                     <div class="hero__stat">
-                        <span class="hero__stat-number">50+</span>
-                        <span class="hero__stat-label">Clients</span>
+                        <span class="hero__stat-number">90 Days</span>
+                        <span class="hero__stat-label">To ROI</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="section">
+    <!-- Problem Statement Section -->
+    <section class="section">
         <div class="container">
             <div class="section__header">
-                <h2 class="section__title">Our Services</h2>
-                <p class="section__subtitle">Comprehensive technology solutions designed to drive your business forward through innovation and expertise.</p>
+                <h2 class="section__title">The Hidden Cost of Manual Processes</h2>
+                <p class="section__subtitle">Businesses waste thousands of pounds annually on repetitive manual tasks that could be automated. Teams spend countless hours on data entry, invoice processing, and report generation—time that could be spent on strategic initiatives that drive growth.</p>
+            </div>
+            <div class="services__grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                <div style="text-align: center; padding: 1.5rem;">
+                    <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem;">£50K+</div>
+                    <div style="color: var(--text-light);">Wasted on manual processes annually</div>
+                </div>
+                <div style="text-align: center; padding: 1.5rem;">
+                    <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem;">40 Hours</div>
+                    <div style="color: var(--text-light);">Per week on repetitive tasks</div>
+                </div>
+                <div style="text-align: center; padding: 1.5rem;">
+                    <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem;">3-5x</div>
+                    <div style="color: var(--text-light);">Slower than automated competitors</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section section--alt">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">Solutions That Deliver Measurable Results</h2>
+                <p class="section__subtitle">Outcome-focused services designed to reduce costs, save time, and accelerate your business growth.</p>
             </div>
             <div class="services__grid">
                 <div class="service__card">
                     <div class="service__icon">🤖</div>
                     <h3 class="service__title">AI Automation</h3>
-                    <p class="service__description">Implement intelligent automation systems that streamline operations, reduce costs, and improve efficiency across your organization.</p>
+                    <p class="service__description">Save 40 hours per week by automating invoice processing, data entry, and reporting. Achieve ROI within 90 days through intelligent workflow automation that eliminates repetitive manual tasks.</p>
                 </div>
                 <div class="service__card">
                     <div class="service__icon">🏗️</div>
-                    <h3 class="service__title">Software Architecture</h3>
-                    <p class="service__description">Design and build scalable, high-performance systems using modern technologies and best practices for enterprise applications.</p>
+                    <h3 class="service__title">High-Performance Architecture</h3>
+                    <p class="service__description">Handle 10,000+ requests per second with systems built using Rust and modern technologies. Deliver 40% faster performance than traditional Java-based solutions for enterprise-scale applications.</p>
                 </div>
                 <div class="service__card">
                     <div class="service__icon">☁️</div>
-                    <h3 class="service__title">Cloud Solutions</h3>
-                    <p class="service__description">Migrate and optimize your applications for cloud platforms with reduced costs and improved performance.</p>
+                    <h3 class="service__title">Cloud Cost Optimization</h3>
+                    <p class="service__description">Reduce infrastructure costs by 30-40% while improving performance by 3x. Migrate to cloud platforms with optimized architectures that lower operational expenses and increase reliability.</p>
                 </div>
                 <div class="service__card">
                     <div class="service__icon">⚡</div>
-                    <h3 class="service__title">Performance Optimization</h3>
-                    <p class="service__description">Enhance your existing systems for better speed, reliability, and cost-effectiveness through expert optimization.</p>
+                    <h3 class="service__title">Performance Engineering</h3>
+                    <p class="service__description">Cut response times by 60% and reduce server costs by 35%. Optimize existing systems for maximum speed, reliability, and cost-effectiveness through expert performance tuning.</p>
                 </div>
                 <div class="service__card">
                     <div class="service__icon">🔧</div>
                     <h3 class="service__title">System Integration</h3>
-                    <p class="service__description">Connect and modernize your technology stack with seamless integrations and microservices architecture.</p>
+                    <p class="service__description">Eliminate data silos and reduce manual data transfer by 80%. Connect your technology stack with robust API integrations and microservices that enable real-time data flow across platforms.</p>
                 </div>
                 <div class="service__card">
                     <div class="service__icon">📊</div>
-                    <h3 class="service__title">Data Analytics</h3>
-                    <p class="service__description">Transform your data into actionable insights with advanced analytics and machine learning solutions.</p>
+                    <h3 class="service__title">Data Analytics & ML</h3>
+                    <p class="service__description">Turn raw data into actionable insights that identify £500K+ revenue opportunities. Build predictive models and analytics dashboards that drive data-informed decision-making.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="process" class="section">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">How We Work</h2>
+                <p class="section__subtitle">A transparent, proven process that delivers results in 90 days</p>
+            </div>
+            <div class="services__grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                <div class="service__card">
+                    <div class="service__icon" style="background: #10b981;">1</div>
+                    <h3 class="service__title">Discovery & Assessment</h3>
+                    <p class="service__description">We analyze your current processes to identify automation opportunities and quantify potential savings. Receive a detailed roadmap with projected ROI within 2 weeks.</p>
+                </div>
+                <div class="service__card">
+                    <div class="service__icon" style="background: #3b82f6;">2</div>
+                    <h3 class="service__title">Design & Development</h3>
+                    <p class="service__description">Build custom solutions using Rust, .NET, and AI technologies tailored to your specific needs. Agile development with weekly progress updates and demonstrations.</p>
+                </div>
+                <div class="service__card">
+                    <div class="service__icon" style="background: #8b5cf6;">3</div>
+                    <h3 class="service__title">Deploy & Optimize</h3>
+                    <p class="service__description">Launch your solution with comprehensive testing and team training. Monitor performance metrics and continuously optimize to maximize ROI and efficiency gains.</p>
                 </div>
             </div>
         </div>
@@ -572,48 +623,48 @@
     <section id="about" class="section section--alt">
         <div class="container">
             <div class="section__header">
-                <h2 class="section__title">Why Choose Us</h2>
-                <p class="section__subtitle">We combine deep technical expertise with business understanding to deliver solutions that make a real impact.</p>
+                <h2 class="section__title">Technical Excellence Meets Business Impact</h2>
+                <p class="section__subtitle">We combine cutting-edge technology expertise with a focus on measurable business outcomes.</p>
             </div>
             <div class="about__content">
                 <div class="about__text">
-                    <h3>Expert Technology Solutions</h3>
-                    <p>We specialize in cutting-edge software development and AI automation for businesses of all sizes. Our team works with modern technologies including Rust, .NET, cloud platforms, and machine learning to solve complex business challenges.</p>
+                    <h3>Built with Rust for Superior Performance</h3>
+                    <p>Our systems leverage Rust's memory safety and performance advantages to deliver 40% faster execution than traditional Java-based solutions. This translates to lower infrastructure costs, faster response times, and better user experiences.</p>
 
-                    <h3>Proven Results</h3>
-                    <p>Our solutions deliver measurable business value with typical improvements of 30-60% in performance, significant cost reductions, and streamlined operations that help our clients stay competitive.</p>
+                    <h3>AI That Augments Your Team</h3>
+                    <p>We implement AI automation that enhances human decision-making rather than replacing it. Our solutions handle repetitive tasks while your team focuses on strategic work that drives growth and innovation.</p>
 
-                    <h3>London-Based, Global Reach</h3>
-                    <p>Based in London with the ability to serve clients worldwide, we bring international expertise with local understanding to every project.</p>
+                    <h3>From Startups to Enterprises</h3>
+                    <p>Based in London and serving businesses of all sizes—from early-stage startups to established enterprises. We understand the unique challenges at each stage and tailor our solutions to match your scale, budget, and growth trajectory.</p>
                 </div>
                 <div class="about__features">
                     <ul class="feature__list">
                         <li class="feature__item">
                             <div class="feature__icon">✓</div>
                             <div class="feature__text">
-                                <div class="feature__title">Modern Technologies</div>
-                                <div class="feature__desc">Rust, .NET, AI, Cloud Platforms</div>
+                                <div class="feature__title">Rust & .NET Expertise</div>
+                                <div class="feature__desc">40% faster than Java, lower costs</div>
                             </div>
                         </li>
                         <li class="feature__item">
                             <div class="feature__icon">✓</div>
                             <div class="feature__text">
-                                <div class="feature__title">Industry Experience</div>
-                                <div class="feature__desc">FinTech, Healthcare, E-commerce</div>
+                                <div class="feature__title">Industry Specialization</div>
+                                <div class="feature__desc">FinTech, Crypto, E-commerce</div>
                             </div>
                         </li>
                         <li class="feature__item">
                             <div class="feature__icon">✓</div>
                             <div class="feature__text">
-                                <div class="feature__title">Performance Focus</div>
-                                <div class="feature__desc">High-throughput, low-latency systems</div>
+                                <div class="feature__title">Performance Engineering</div>
+                                <div class="feature__desc">10,000+ requests/sec capability</div>
                             </div>
                         </li>
                         <li class="feature__item">
                             <div class="feature__icon">✓</div>
                             <div class="feature__text">
-                                <div class="feature__title">Cost Optimization</div>
-                                <div class="feature__desc">Reduce infrastructure costs by 30%+</div>
+                                <div class="feature__title">90-Day ROI Framework</div>
+                                <div class="feature__desc">Proven methodology for fast results</div>
                             </div>
                         </li>
                     </ul>
@@ -622,11 +673,47 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">Frequently Asked Questions</h2>
+                <p class="section__subtitle">Clear answers to help you make an informed decision</p>
+            </div>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="service__card" style="margin-bottom: 1.5rem;">
+                    <h3 class="service__title" style="font-size: 1.1rem; margin-bottom: 0.75rem;">How quickly can we see ROI?</h3>
+                    <p class="service__description">Most clients achieve positive ROI within 90 days. During the discovery phase, we provide a detailed projection of cost savings and efficiency gains specific to your processes, so you know exactly what to expect before committing.</p>
+                </div>
+                <div class="service__card" style="margin-bottom: 1.5rem;">
+                    <h3 class="service__title" style="font-size: 1.1rem; margin-bottom: 0.75rem;">What's the typical project timeline?</h3>
+                    <p class="service__description">Discovery and assessment take 2 weeks. Development and deployment typically range from 6-12 weeks depending on complexity. We use agile methodology with weekly updates, so you see progress continuously rather than waiting months for results.</p>
+                </div>
+                <div class="service__card" style="margin-bottom: 1.5rem;">
+                    <h3 class="service__title" style="font-size: 1.1rem; margin-bottom: 0.75rem;">Do you work with existing systems or build from scratch?</h3>
+                    <p class="service__description">Both. We can integrate with your existing technology stack through APIs and microservices, or build new systems when that's more cost-effective. Our assessment identifies the optimal approach for your specific situation.</p>
+                </div>
+                <div class="service__card" style="margin-bottom: 1.5rem;">
+                    <h3 class="service__title" style="font-size: 1.1rem; margin-bottom: 0.75rem;">What types of companies do you work with?</h3>
+                    <p class="service__description">We work with businesses of all sizes—from early-stage startups building their first product to established enterprises optimizing existing systems. We specialize in FinTech, Crypto, and E-commerce sectors, with expertise in regulatory compliance and data security.</p>
+                </div>
+                <div class="service__card" style="margin-bottom: 1.5rem;">
+                    <h3 class="service__title" style="font-size: 1.1rem; margin-bottom: 0.75rem;">What happens after deployment?</h3>
+                    <p class="service__description">We provide comprehensive training for your team and ongoing support. We monitor system performance, optimize based on real-world usage, and ensure you're achieving the projected cost savings and efficiency gains.</p>
+                </div>
+                <div class="service__card" style="margin-bottom: 1.5rem;">
+                    <h3 class="service__title" style="font-size: 1.1rem; margin-bottom: 0.75rem;">How do you ensure data security?</h3>
+                    <p class="service__description">We follow industry best practices for data security and privacy. All solutions are built with security-first architecture, encrypted data transmission, and compliance with UK data protection regulations including GDPR.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="section contact">
         <div class="container">
-            <h2 class="contact__title">Ready to Get Started?</h2>
-            <p class="contact__subtitle">Contact us today to discuss how we can help transform your business with modern technology solutions.</p>
+            <h2 class="contact__title">Ready to Transform Your Business?</h2>
+            <p class="contact__subtitle">Get your free automation assessment and discover exactly how much you can save.</p>
 
             <div class="contact__details">
                 <div class="contact__item">
@@ -638,13 +725,13 @@
                     <div class="contact__item-icon">📧</div>
                     <div class="contact__item-title">Email</div>
                     <div class="contact__item-text">
-                        <a href="mailto:contact@gritmax.co.uk">Email Us</a>
+                        <a href="mailto:contact@gritmax.co.uk">contact@gritmax.co.uk</a>
                     </div>
                 </div>
                 <div class="contact__item">
                     <div class="contact__item-icon">💼</div>
-                    <div class="contact__item-title">Industries</div>
-                    <div class="contact__item-text">FinTech • Healthcare • E-commerce</div>
+                    <div class="contact__item-title">Specializations</div>
+                    <div class="contact__item-text">FinTech • Crypto • E-commerce</div>
                 </div>
             </div>
         </div>
@@ -653,7 +740,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p class="footer__text">© 2025 GRITMAX LTD. All rights reserved. | Professional Software Solutions | London, UK</p>
+            <p class="footer__text">© 2025 GRITMAX LTD. All rights reserved. | AI Automation & Software Solutions | London, UK</p>
         </div>
     </footer>
 
