@@ -1,775 +1,861 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GRITMAX LTD - Software Architecture & AI Solutions</title>
-    <meta name="description" content="GRITMAX LTD - Professional software consultancy specializing in AI automation, enterprise architecture, and digital transformation for businesses worldwide.">
-    <meta name="keywords" content="software consultancy, AI automation, enterprise architecture, digital transformation, London consulting">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-color: #1e40af;
-            --secondary-color: #1e3a8a;
-            --accent-color: #3b82f6;
-            --text-dark: #1f2937;
-            --text-light: #6b7280;
-            --background: #ffffff;
-            --surface: #f8fafc;
-            --border: #e5e7eb;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background: var(--background);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Header Styles */
-        .header {
-            background: var(--background);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-        }
-
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.2rem 0;
-        }
-
-        .nav__brand {
-            display: flex;
-            align-items: center;
-            gap: 0;
-        }
-
-        .nav__logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--primary-color);
-            letter-spacing: -0.02em;
-            text-transform: uppercase;
-        }
-
-        .nav__tagline {
-            font-size: 0.75rem;
-            color: var(--text-light);
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-left: 0.5rem;
-            padding-left: 0.5rem;
-            border-left: 1px solid var(--border);
-        }
-
-        .nav__menu {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-        }
-
-        .nav__link {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .nav__link:hover {
-            color: var(--primary-color);
-        }
-
-        .nav__actions {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .btn {
-            padding: 0.8rem 1.8rem;
-            border: none;
-            border-radius: 0.375rem;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            transition: 0.3s;
-            cursor: pointer;
-            font-size: 0.9rem;
-            letter-spacing: 0.02em;
-        }
-
-        .btn--primary {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        .btn--primary:hover {
-            background: var(--secondary-color);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
-        }
-
-        .nav__toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .nav__toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--text-dark);
-            transition: 0.3s;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            padding: 8rem 0 5rem;
-            text-align: center;
-        }
-
-        .hero__content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero__title {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-        }
-
-        .hero__subtitle {
-            font-size: 1.25rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.9;
-            font-weight: 400;
-            line-height: 1.6;
-        }
-
-        .hero__cta {
-            margin-bottom: 3rem;
-        }
-
-        .hero__stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-            padding-top: 3rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .hero__stat {
-            text-align: center;
-        }
-
-        .hero__stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .hero__stat-label {
-            opacity: 0.8;
-            font-size: 0.9rem;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        /* Section Styles */
-        .section {
-            padding: 5rem 0;
-        }
-
-        .section--alt {
-            background: var(--surface);
-        }
-
-        .section__header {
-            text-align: center;
-            margin-bottom: 4rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .section__title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
-        }
-
-        .section__subtitle {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            line-height: 1.7;
-        }
-
-        /* Services Grid */
-        .services__grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .service__card {
-            background: var(--background);
-            padding: 2.5rem;
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: 0.3s;
-            border: 1px solid var(--border);
-        }
-
-        .service__card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .service__icon {
-            width: 60px;
-            height: 60px;
-            background: var(--primary-color);
-            border-radius: 0.75rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-            color: white;
-        }
-
-        .service__title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-        }
-
-        .service__description {
-            color: var(--text-light);
-            line-height: 1.7;
-        }
-
-        /* About Section */
-        .about__content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        .about__text h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-
-        .about__text p {
-            margin-bottom: 1.5rem;
-            color: var(--text-light);
-            line-height: 1.7;
-        }
-
-        .about__features {
-            background: var(--background);
-            padding: 2rem;
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            border: 1px solid var(--border);
-        }
-
-        .feature__list {
-            list-style: none;
-        }
-
-        .feature__item {
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .feature__item:last-child {
-            border-bottom: none;
-        }
-
-        .feature__icon {
-            width: 40px;
-            height: 40px;
-            background: var(--primary-color);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-        }
-
-        .feature__text {
-            flex: 1;
-        }
-
-        .feature__title {
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .feature__desc {
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
-        /* Contact Section */
-        .contact {
-            background: var(--primary-color);
-            color: white;
-            text-align: center;
-        }
-
-        .contact__title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .contact__subtitle {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .contact__details {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .contact__item {
-            text-align: center;
-        }
-
-        .contact__item-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .contact__item-title {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .contact__item-text {
-            opacity: 0.9;
-        }
-
-        .contact__item-text a {
-            color: white;
-            text-decoration: none;
-        }
-
-        .contact__item-text a:hover {
-            text-decoration: underline;
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--text-dark);
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        .footer__text {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav__menu {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--background);
-                flex-direction: column;
-                padding: 1rem;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            }
-
-            .nav__menu.active {
-                display: flex;
-            }
-
-            .nav__toggle {
-                display: flex;
-            }
-
-            .hero__title {
-                font-size: 2rem;
-            }
-
-            .section__title {
-                font-size: 2rem;
-            }
-
-            .about__content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .services__grid {
-                grid-template-columns: 1fr;
-            }
-
-            .container {
-                padding: 0 1rem;
-            }
-
-            .hero__stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>GRITMAX</title>
+<meta name="description" content="GRITMAX LTD is a London software architecture consultancy. Our architects and engineers design, build and modernise data-intensive backend systems, trading and market data infrastructure for fintech, crypto and e-commerce companies.">
+<meta property="og:title" content="GRITMAX — See it. Shape it. Sorted.">
+<meta property="og:description" content="Software architecture, data-intensive applications and trading infrastructure for companies that cannot afford to stop.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://gritmax.co.uk/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Cabin:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: light;
+    --tile: #EDEFF1;
+    --tile-2: #E3E6EA;
+    --ink: #10151C;
+    --ink-2: #4E5865;
+    --grout: #C7CDD4;
+    --line: #E0261F;
+    --line-2: #1230A8;
+    --on-line: #FFFFFF;
+    --display: 'Hammersmith One', 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+    --body: 'Cabin', 'Gill Sans', 'Helvetica Neue', Arial, sans-serif;
+    --mono: 'IBM Plex Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
+    --gutter: clamp(16px, 5vw, 72px);
+    --measure: 62ch;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --tile: #0F1318;
+      --tile-2: #171C23;
+      --ink: #EBEEF1;
+      --ink-2: #9AA4B0;
+      --grout: #2B333C;
+      --line: #FF5A4F;
+      --line-2: #8AA1FF;
+      --on-line: #0F1318;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --tile: #0F1318;
+    --tile-2: #171C23;
+    --ink: #EBEEF1;
+    --ink-2: #9AA4B0;
+    --grout: #2B333C;
+    --line: #FF5A4F;
+    --line-2: #8AA1FF;
+    --on-line: #0F1318;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--tile);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--line); outline-offset: 3px; }
+  ::selection { background: var(--line); color: var(--on-line); }
+
+  h1, h2, h3 {
+    font-family: var(--display);
+    font-weight: 400;
+    margin: 0;
+    text-wrap: balance;
+    letter-spacing: -0.01em;
+  }
+  p { margin: 0; }
+
+  .mono {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+
+  .wrap { padding-inline: var(--gutter); }
+  .eyebrow { display: flex; flex-wrap: wrap; gap: 0.4rem 0.8rem; }
+  .rule { border-top: 1px solid var(--grout); }
+
+  /* ---------- Header ---------- */
+  .top {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 20;
+    background: var(--tile);
+    border-bottom: 1px solid var(--grout);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 0.9rem;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    text-decoration: none;
+    font-family: var(--display);
+    font-size: 1.25rem;
+    letter-spacing: 0.04em;
+  }
+  .mark { width: 34px; height: 34px; display: block; color: var(--ink); }
+  .nav { display: flex; align-items: center; gap: 1.6rem; }
+  .nav a {
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    padding-block: 0.2rem;
+  }
+  .nav a::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 100%;
+    bottom: -2px;
+    height: 2px;
+    background: var(--line);
+    transition: right 180ms ease;
+  }
+  .nav a:hover::after { right: 0; }
+  .theme {
+    border: 1px solid var(--grout);
+    background: transparent;
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.45rem 0.7rem;
+    cursor: pointer;
+  }
+  .theme:hover { border-color: var(--ink); }
+  .menu-btn {
+    display: none;
+    border: 1px solid var(--grout);
+    background: transparent;
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.45rem 0.7rem;
+    cursor: pointer;
+  }
+  @media (max-width: 760px) {
+    .menu-btn { display: inline-block; }
+    .nav {
+      display: none;
+      position: absolute;
+      left: 0; right: 0; top: 100%;
+      background: var(--tile);
+      border-bottom: 1px solid var(--grout);
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      padding: 0.5rem var(--gutter) 1rem;
+    }
+    .nav.open { display: flex; }
+    .nav a { padding-block: 0.7rem; width: 100%; border-top: 1px solid var(--grout); }
+    .nav a::after { display: none; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding-block: clamp(3rem, 7vw, 5.5rem) clamp(2.5rem, 6vw, 4.5rem);
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: center;
+  }
+  .hero-text { display: grid; gap: 1.6rem; }
+  .hero h1 {
+    font-size: clamp(2.1rem, 4.2vw, 3.8rem);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    max-width: 22ch;
+  }
+  .hero h1 .beat { display: inline-block; }
+  .hero h1 .stop { color: var(--line); }
+  .hero-art {
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    gap: 1rem;
+  }
+  .hero-logo {
+    width: min(100%, 320px);
+    height: auto;
+    color: var(--ink);
+    display: block;
+  }
+  .hero-logo .ring { stroke: var(--ink); }
+  .hero-logo .axis { stroke: var(--line); }
+  .hero-art .mono { text-align: center; }
+  .hero-meta {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid var(--ink);
+    margin-top: 0.5rem;
+  }
+  .hero-meta div { padding: 0.9rem 1rem 0.9rem 0; border-bottom: 1px solid var(--grout); display: grid; gap: 0.2rem; }
+  .hero-meta strong { font-family: var(--display); font-weight: 400; font-size: 1.1rem; }
+  .hero-meta span { color: var(--ink-2); font-size: 0.92rem; }
+  .lede {
+    font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+    line-height: 1.45;
+    max-width: 48ch;
+    color: var(--ink);
+  }
+  .lede b { font-weight: 600; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.85rem 1.25rem;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    background: transparent;
+    transition: background 150ms ease, color 150ms ease;
+    white-space: nowrap;
+  }
+  .btn.primary { background: var(--ink); color: var(--tile); }
+  .btn.primary:hover { background: var(--line); border-color: var(--line); color: var(--on-line); }
+  .btn:not(.primary):hover { background: var(--tile-2); }
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: minmax(0, 1fr); }
+    .hero-art { order: -1; justify-items: start; }
+    .hero-logo { width: 120px; }
+    .hero-art .mono { display: none; }
+  }
+  @media (max-width: 560px) {
+    .hero-meta { grid-template-columns: minmax(0, 1fr); }
+  }
+
+  /* ---------- Ticker ---------- */
+  .ticker {
+    border-block: 1px solid var(--grout);
+    overflow: hidden;
+    padding-block: 0.8rem;
+    position: relative;
+  }
+  .ticker-track {
+    display: flex;
+    gap: 0;
+    width: max-content;
+    animation: slide 46s linear infinite;
+  }
+  .ticker:hover .ticker-track { animation-play-state: paused; }
+  .ticker-track span {
+    font-family: var(--display);
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+    padding-inline: 1.4rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 1.4rem;
+    white-space: nowrap;
+  }
+  .ticker-track span::after {
+    content: "";
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--line);
+    background: var(--tile);
+    flex: none;
+  }
+  @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track { animation: none; width: auto; flex-wrap: wrap; row-gap: 0.5rem; }
+    .ticker-track .dup { display: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* ---------- Sections ---------- */
+  section { padding-block: clamp(3.5rem, 8vw, 7rem); }
+  .head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: 2rem;
+    align-items: start;
+    margin-bottom: clamp(2rem, 5vw, 3.5rem);
+  }
+  .head h2 {
+    font-size: clamp(2rem, 4.6vw, 3.6rem);
+    line-height: 1.02;
+  }
+  .head p {
+    max-width: var(--measure);
+    color: var(--ink-2);
+    font-size: 1.05rem;
+    padding-top: 0.5rem;
+  }
+  @media (max-width: 760px) {
+    .head { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  }
+
+  /* Services */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: 1px solid var(--grout);
+    border-left: 1px solid var(--grout);
+  }
+  .cell {
+    border-right: 1px solid var(--grout);
+    border-bottom: 1px solid var(--grout);
+    padding: clamp(1.4rem, 3vw, 2.4rem);
+    display: grid;
+    gap: 1rem;
+    align-content: start;
+    position: relative;
+    min-height: 100%;
+  }
+  .cell .code {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cell .dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--ink);
+    background: var(--tile);
+    transition: border-color 150ms ease, transform 150ms ease;
+  }
+  .cell:hover .dot { border-color: var(--line); transform: scale(1.25); }
+  .cell h3 { font-size: clamp(1.4rem, 2.4vw, 1.9rem); line-height: 1.1; }
+  .cell p { color: var(--ink-2); max-width: 46ch; }
+  .cell ul {
+    margin: 0.3rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .cell li {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border: 1px solid var(--grout);
+    padding: 0.25rem 0.5rem;
+    color: var(--ink);
+  }
+  @media (max-width: 760px) {
+    .grid { grid-template-columns: minmax(0, 1fr); }
+  }
+
+  /* Approach: the line */
+  .line-wrap { overflow-x: auto; }
+  .line-svg { width: 100%; min-width: 680px; height: auto; display: block; }
+  .line-svg .rail { stroke: var(--line); stroke-width: 10; fill: none; stroke-linecap: round; }
+  .line-svg .st { fill: var(--tile); stroke: var(--ink); stroke-width: 4; }
+  .line-svg .st.term { fill: var(--ink); }
+  .line-svg text { font-family: var(--display); fill: var(--ink); font-size: 22px; }
+  .line-svg .sub { font-family: var(--mono); font-size: 12px; letter-spacing: 1px; fill: var(--ink-2); }
+  .stops {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  .stop-item { display: grid; gap: 0.5rem; align-content: start; }
+  .stop-item h3 { font-size: 1.25rem; }
+  .stop-item p { color: var(--ink-2); font-size: 0.98rem; }
+  @media (max-width: 900px) { .stops { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 520px) { .stops { grid-template-columns: minmax(0, 1fr); } }
+  @media (prefers-reduced-motion: no-preference) {
+    .line-svg .rail {
+      stroke-dasharray: 1400;
+      stroke-dashoffset: 1400;
+    }
+    .line-svg.go .rail { animation: draw 1.6s cubic-bezier(.4,0,.2,1) forwards; }
+    .line-svg .st, .line-svg text { opacity: 0.001; }
+    .line-svg.go .st, .line-svg.go text { animation: pop 500ms ease forwards; }
+    .line-svg.go .s2 { animation-delay: 350ms; }
+    .line-svg.go .s3 { animation-delay: 750ms; }
+    .line-svg.go .s4 { animation-delay: 1150ms; }
+  }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  @keyframes pop { to { opacity: 1; } }
+
+  /* About */
+  .about {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: start;
+  }
+  .about .bio { display: grid; gap: 1.2rem; max-width: var(--measure); }
+  .about .bio p { font-size: 1.08rem; }
+  .facts {
+    border-top: 1px solid var(--ink);
+    display: grid;
+  }
+  .facts div {
+    display: grid;
+    grid-template-columns: 9rem minmax(0, 1fr);
+    gap: 1rem;
+    padding-block: 0.85rem;
+    border-bottom: 1px solid var(--grout);
+    align-items: baseline;
+  }
+  .facts dt { font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
+  .facts dd { margin: 0; font-weight: 500; }
+  .facts a { text-decoration: none; border-bottom: 1px solid var(--grout); }
+  .facts a:hover { border-color: var(--line); }
+  .principles {
+    margin-top: clamp(2.5rem, 6vw, 4.5rem);
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid var(--ink);
+  }
+  .principles div {
+    padding: 1.4rem 1.4rem 1.4rem 0;
+    border-bottom: 1px solid var(--grout);
+    display: grid;
+    gap: 0.6rem;
+  }
+  .principles h3 { font-size: clamp(1.35rem, 2.2vw, 1.8rem); line-height: 1.1; }
+  .principles p { color: var(--ink-2); font-size: 0.98rem; max-width: 34ch; }
+  @media (max-width: 760px) {
+    .about { grid-template-columns: minmax(0, 1fr); }
+    .principles { grid-template-columns: minmax(0, 1fr); }
+    .facts div { grid-template-columns: 7rem minmax(0, 1fr); }
+  }
+
+  /* Sectors */
+  .sectors {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid var(--ink);
+  }
+  .sector {
+    padding: 1.5rem 1.5rem 1.5rem 0;
+    border-bottom: 1px solid var(--grout);
+    display: grid;
+    gap: 0.8rem;
+    align-content: start;
+  }
+  .sector h3 { font-size: clamp(1.4rem, 2.4vw, 1.9rem); line-height: 1.1; }
+  .sector p { color: var(--ink-2); font-size: 0.98rem; max-width: 40ch; }
+  .sector ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35rem; }
+  .sector li { padding-left: 1.1rem; position: relative; font-weight: 500; font-size: 0.95rem; }
+  .sector li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 8px; height: 8px; border-radius: 50%; border: 2px solid var(--line); }
+  @media (max-width: 760px) { .sectors { grid-template-columns: minmax(0, 1fr); } }
+
+  /* Contact */
+  .contact { border-top: 1px solid var(--ink); }
+  .contact h2 {
+    font-size: clamp(2.2rem, 6vw, 5rem);
+    line-height: 1;
+    max-width: 14ch;
+  }
+  .email-row {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 1.5rem;
+  }
+  .email {
+    font-family: var(--display);
+    font-size: clamp(1.4rem, 4.2vw, 3.2rem);
+    text-decoration: none;
+    border-bottom: 3px solid var(--line);
+    padding-bottom: 0.1em;
+    word-break: break-all;
+  }
+  .copy {
+    border: 1px solid var(--grout);
+    background: transparent;
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.55rem 0.8rem;
+    cursor: pointer;
+    min-width: 7.5rem;
+  }
+  .copy:hover { border-color: var(--ink); }
+  .contact-grid {
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2rem;
+  }
+  .contact-grid p { color: var(--ink-2); max-width: 44ch; }
+  .links { display: grid; gap: 0.4rem; align-content: start; }
+  .links a {
+    text-decoration: none;
+    display: grid;
+    grid-template-columns: 7rem minmax(0, 1fr);
+    gap: 1rem;
+    padding-block: 0.6rem;
+    border-bottom: 1px solid var(--grout);
+    font-weight: 500;
+  }
+  .links a:hover { border-color: var(--line); }
+  @media (max-width: 640px) { .contact-grid { grid-template-columns: minmax(0, 1fr); } }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--grout);
+    padding-block: 1.5rem 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem 2rem;
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+
+  /* Reveal */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { opacity: 0.001; transform: translateY(14px); transition: opacity 600ms ease, transform 600ms ease; }
+    .reveal.in { opacity: 1; transform: none; }
+  }
+</style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="nav container">
-            <div class="nav__brand">
-                <h1 class="nav__logo">GRITMAX</h1>
-                <span class="nav__tagline">Software Solutions</span>
-            </div>
-            <ul class="nav__menu" id="navMenu">
-                <li><a href="#services" class="nav__link">Services</a></li>
-                <li><a href="#process" class="nav__link">How It Works</a></li>
-                <li><a href="#about" class="nav__link">About</a></li>
-                <li><a href="#contact" class="nav__link">Contact</a></li>
-            </ul>
-            <div class="nav__actions">
-                <a href="#contact" class="btn btn--primary">Free Assessment</a>
-                <button class="nav__toggle" id="navToggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </nav>
-    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero__content">
-                <h2 class="hero__title">Transform Your Business with AI Automation</h2>
-                <p class="hero__subtitle">Intelligent AI automation and high-performance software architecture for startups, scale-ups, and enterprises. Transform manual processes into automated workflows that save time and reduce costs.</p>
-                <div class="hero__cta">
-                    <a href="#contact" class="btn btn--primary" style="background: rgba(255,255,255,0.2); color: white; font-size: 1rem;">Get Your Free Automation Assessment</a>
-                </div>
-                <div class="hero__stats">
-                    <div class="hero__stat">
-                        <span class="hero__stat-number">40%</span>
-                        <span class="hero__stat-label">Cost Reduction</span>
-                    </div>
-                    <div class="hero__stat">
-                        <span class="hero__stat-number">200+</span>
-                        <span class="hero__stat-label">Hours Saved Monthly</span>
-                    </div>
-                    <div class="hero__stat">
-                        <span class="hero__stat-number">90 Days</span>
-                        <span class="hero__stat-label">To ROI</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<header class="top wrap">
+  <a class="brand" href="#top" aria-label="GRITMAX home">
+    <svg class="mark" viewBox="70 46 300 300" aria-hidden="true">
+      <circle cx="220" cy="196" r="112" fill="none" stroke="currentColor" stroke-width="10"></circle>
+      <g fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M221 126 V269"></path>
+        <path d="M190 154 V163 Q202 177 221 185 Q240 177 252 163 V154"></path>
+        <path d="M196 204 H245"></path>
+        <path d="M190 254 V246 Q204 229 221 223 Q238 229 252 246 V254"></path>
+      </g>
+    </svg>
+    GRITMAX
+  </a>
+  <nav class="nav" id="nav" aria-label="Primary">
+    <a href="#services">Services</a>
+    <a href="#approach">Approach</a>
+    <a href="#about">About</a>
+    <a href="#sectors">Sectors</a>
+    <a href="#contact">Contact</a>
+    <button class="theme" id="theme" type="button" aria-label="Toggle dark mode">Dark</button>
+  </nav>
+  <button class="menu-btn" id="menu" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+</header>
 
-    <!-- Problem Statement Section -->
-    <section class="section">
-        <div class="container">
-            <div class="section__header">
-                <h2 class="section__title">The Hidden Cost of Manual Processes</h2>
-                <p class="section__subtitle">Businesses waste thousands of pounds annually on repetitive manual tasks that could be automated. Teams spend countless hours on data entry, invoice processing, and report generation—time that could be spent on strategic initiatives that drive growth.</p>
-            </div>
-            <div class="services__grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
-                <div style="text-align: center; padding: 1.5rem;">
-                    <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem;">£50K+</div>
-                    <div style="color: var(--text-light);">Wasted on manual processes annually</div>
-                </div>
-                <div style="text-align: center; padding: 1.5rem;">
-                    <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem;">40 Hours</div>
-                    <div style="color: var(--text-light);">Per week on repetitive tasks</div>
-                </div>
-                <div style="text-align: center; padding: 1.5rem;">
-                    <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem;">3-5x</div>
-                    <div style="color: var(--text-light);">Slower than automated competitors</div>
-                </div>
-            </div>
-        </div>
-    </section>
+<main id="top">
 
-    <!-- Services Section -->
-    <section id="services" class="section section--alt">
-        <div class="container">
-            <div class="section__header">
-                <h2 class="section__title">Solutions That Deliver Measurable Results</h2>
-                <p class="section__subtitle">Outcome-focused services designed to reduce costs, save time, and accelerate your business growth.</p>
-            </div>
-            <div class="services__grid">
-                <div class="service__card">
-                    <div class="service__icon">🤖</div>
-                    <h3 class="service__title">AI Automation</h3>
-                    <p class="service__description">Save 40 hours per week by automating invoice processing, data entry, and reporting. Achieve ROI within 90 days through intelligent workflow automation that eliminates repetitive manual tasks.</p>
-                </div>
-                <div class="service__card">
-                    <div class="service__icon">🏗️</div>
-                    <h3 class="service__title">High-Performance Architecture</h3>
-                    <p class="service__description">Handle 10,000+ requests per second with systems built using Rust and modern technologies. Deliver 40% faster performance than traditional Java-based solutions for enterprise-scale applications.</p>
-                </div>
-                <div class="service__card">
-                    <div class="service__icon">☁️</div>
-                    <h3 class="service__title">Cloud Cost Optimization</h3>
-                    <p class="service__description">Reduce infrastructure costs by 30-40% while improving performance by 3x. Migrate to cloud platforms with optimized architectures that lower operational expenses and increase reliability.</p>
-                </div>
-                <div class="service__card">
-                    <div class="service__icon">⚡</div>
-                    <h3 class="service__title">Performance Engineering</h3>
-                    <p class="service__description">Cut response times by 60% and reduce server costs by 35%. Optimize existing systems for maximum speed, reliability, and cost-effectiveness through expert performance tuning.</p>
-                </div>
-                <div class="service__card">
-                    <div class="service__icon">🔧</div>
-                    <h3 class="service__title">System Integration</h3>
-                    <p class="service__description">Eliminate data silos and reduce manual data transfer by 80%. Connect your technology stack with robust API integrations and microservices that enable real-time data flow across platforms.</p>
-                </div>
-                <div class="service__card">
-                    <div class="service__icon">📊</div>
-                    <h3 class="service__title">Data Analytics & ML</h3>
-                    <p class="service__description">Turn raw data into actionable insights that identify £500K+ revenue opportunities. Build predictive models and analytics dashboards that drive data-informed decision-making.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section class="hero wrap">
+    <div class="hero-text">
+      <p class="mono eyebrow"><span>Software Architecture</span><span>·</span><span>Data Intensive Applications</span><span>·</span><span>Trading &amp; Market Data Infrastructure</span></p>
+      <h1><span class="beat">See it.</span> <span class="beat">Shape it.</span> <span class="beat stop">Sorted.</span></h1>
+      <p class="lede"><b>Backend systems for companies that cannot afford to stop.</b> GRITMAX is a London engineering consultancy. Our architects and engineers design, build and modernise the platforms behind <b>fintech, crypto and e‑commerce</b> products, and stay until your team runs them with confidence.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="mailto:contact@gritmax.co.uk">Start a conversation</a>
+        <a class="btn" href="#approach">How we work</a>
+      </div>
+      <div class="hero-meta">
+        <div><strong>Senior only</strong><span>Every engagement is staffed by architects and senior engineers.</span></div>
+        <div><strong>Working software</strong><span>Code in your repository from the second week.</span></div>
+        <div><strong>Measured</strong><span>Latency, cost and throughput agreed up front.</span></div>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg class="hero-logo" viewBox="70 46 300 300">
+        <circle class="ring" cx="220" cy="196" r="112" fill="none" stroke-width="8"></circle>
+        <g fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+          <path class="axis" d="M221 126 V269"></path>
+          <path d="M190 154 V163 Q202 177 221 185 Q240 177 252 163 V154"></path>
+          <path d="M196 204 H245"></path>
+          <path d="M190 254 V246 Q204 229 221 223 Q238 229 252 246 V254"></path>
+        </g>
+      </svg>
+      <p class="mono">GRITMAX LTD · Est. 2025</p>
+    </div>
+  </section>
 
-    <!-- How It Works Section -->
-    <section id="process" class="section">
-        <div class="container">
-            <div class="section__header">
-                <h2 class="section__title">How We Work</h2>
-                <p class="section__subtitle">A transparent, proven process that delivers results in 90 days</p>
-            </div>
-            <div class="services__grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-                <div class="service__card">
-                    <div class="service__icon" style="background: #10b981;">1</div>
-                    <h3 class="service__title">Discovery & Assessment</h3>
-                    <p class="service__description">We analyze your current processes to identify automation opportunities and quantify potential savings. Receive a detailed roadmap with projected ROI within 2 weeks.</p>
-                </div>
-                <div class="service__card">
-                    <div class="service__icon" style="background: #3b82f6;">2</div>
-                    <h3 class="service__title">Design & Development</h3>
-                    <p class="service__description">Build custom solutions using Rust, .NET, and AI technologies tailored to your specific needs. Agile development with weekly progress updates and demonstrations.</p>
-                </div>
-                <div class="service__card">
-                    <div class="service__icon" style="background: #8b5cf6;">3</div>
-                    <h3 class="service__title">Deploy & Optimize</h3>
-                    <p class="service__description">Launch your solution with comprehensive testing and team training. Monitor performance metrics and continuously optimize to maximize ROI and efficiency gains.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Software architecture</span><span>Data-intensive applications</span><span>Trading infrastructure</span><span>Market data pipelines</span><span>Platform modernisation</span><span>Cloud cost work</span><span>AI automation</span><span>System integration</span>
+      <span class="dup">Software architecture</span><span class="dup">Data-intensive applications</span><span class="dup">Trading infrastructure</span><span class="dup">Market data pipelines</span><span class="dup">Platform modernisation</span><span class="dup">Cloud cost work</span><span class="dup">AI automation</span><span class="dup">System integration</span>
+    </div>
+  </div>
 
-    <!-- About Section -->
-    <section id="about" class="section section--alt">
-        <div class="container">
-            <div class="section__header">
-                <h2 class="section__title">Technical Excellence Meets Business Impact</h2>
-                <p class="section__subtitle">We combine cutting-edge technology expertise with a focus on measurable business outcomes.</p>
-            </div>
-            <div class="about__content">
-                <div class="about__text">
-                    <h3>Built with Rust for Superior Performance</h3>
-                    <p>Our systems leverage Rust's memory safety and performance advantages to deliver 40% faster execution than traditional Java-based solutions. This translates to lower infrastructure costs, faster response times, and better user experiences.</p>
+  <section class="wrap" id="services">
+    <div class="head reveal">
+      <h2>What we do</h2>
+      <p>Four kinds of work, one standard. Every engagement is scoped in writing, measured against numbers we agree at the start, and delivered as working software rather than slides. We choose the technology for the problem, never the other way round.</p>
+    </div>
+    <div class="grid">
+      <article class="cell reveal">
+        <div class="code"><span class="mono">01 · Architecture</span><span class="dot"></span></div>
+        <h3>Architecture &amp; technical upgrades</h3>
+        <p>Platforms that need to change without stopping. We map what exists, decide what to keep, and plan the migration so releases continue while the foundations move underneath.</p>
+        <ul><li>Architecture review</li><li>Migrations</li><li>Legacy platforms</li><li>Event-driven</li></ul>
+      </article>
+      <article class="cell reveal">
+        <div class="code"><span class="mono">02 · Data &amp; trading</span><span class="dot"></span></div>
+        <h3>Data-intensive &amp; trading systems</h3>
+        <p>Systems where latency, throughput and correctness decide the outcome: trading and order flow, market data, pricing, payments. Load-tested and profiled before anyone calls them fast.</p>
+        <ul><li>Low latency</li><li>Market data</li><li>Streaming</li><li>Distributed systems</li></ul>
+      </article>
+      <article class="cell reveal">
+        <div class="code"><span class="mono">03 · Cloud</span><span class="dot"></span></div>
+        <h3>Cloud &amp; running costs</h3>
+        <p>AWS and Azure estates that grew faster than anyone planned. We simplify the architecture and right-size what remains so the monthly bill tracks the business, not its history.</p>
+        <ul><li>AWS</li><li>Azure</li><li>Cost review</li><li>Observability</li><li>Reliability</li></ul>
+      </article>
+      <article class="cell reveal">
+        <div class="code"><span class="mono">04 · Automation</span><span class="dot"></span></div>
+        <h3>AI automation &amp; integration</h3>
+        <p>Practical automation of the work your team repeats: document handling, reconciliation, reporting, customer operations. Built into your systems with the same rigour as any other service.</p>
+        <ul><li>LLM workflows</li><li>APIs</li><li>Data pipelines</li><li>Back-office</li></ul>
+      </article>
+    </div>
+  </section>
 
-                    <h3>AI That Augments Your Team</h3>
-                    <p>We implement AI automation that enhances human decision-making rather than replacing it. Our solutions handle repetitive tasks while your team focuses on strategic work that drives growth and innovation.</p>
+  <section class="wrap rule" id="approach">
+    <div class="head reveal">
+      <h2>One line, four stops</h2>
+      <p>No discovery that lasts a quarter, no build that disappears for months. You see working software from the second week and you own everything at the end.</p>
+    </div>
+    <div class="line-wrap">
+      <svg class="line-svg" id="line" viewBox="0 0 1200 170" role="img" aria-label="Process line with four stops: Discovery, Blueprint, Build, Handover">
+        <path class="rail" d="M90 100 H1110"></path>
+        <g class="s1">
+          <circle class="st term" cx="90" cy="100" r="14"></circle>
+          <text x="90" y="52" text-anchor="middle">Discovery</text>
+          <text class="sub" x="90" y="150" text-anchor="middle">WEEKS 1–2</text>
+        </g>
+        <g class="s2">
+          <circle class="st" cx="430" cy="100" r="14"></circle>
+          <text x="430" y="52" text-anchor="middle">Blueprint</text>
+          <text class="sub" x="430" y="150" text-anchor="middle">WEEK 3</text>
+        </g>
+        <g class="s3">
+          <circle class="st" cx="770" cy="100" r="14"></circle>
+          <text x="770" y="52" text-anchor="middle">Build</text>
+          <text class="sub" x="770" y="150" text-anchor="middle">WEEKLY DEMOS</text>
+        </g>
+        <g class="s4">
+          <circle class="st term" cx="1110" cy="100" r="14"></circle>
+          <text x="1110" y="52" text-anchor="middle">Handover</text>
+          <text class="sub" x="1110" y="150" text-anchor="middle">YOUR TEAM RUNS IT</text>
+        </g>
+      </svg>
+    </div>
+    <div class="stops">
+      <div class="stop-item reveal">
+        <span class="mono">Stop 1</span>
+        <h3>Discovery</h3>
+        <p>We read the code, talk to the people who run it, and measure what is actually slow or expensive. You get a written assessment, not a sales deck.</p>
+      </div>
+      <div class="stop-item reveal">
+        <span class="mono">Stop 2</span>
+        <h3>Blueprint</h3>
+        <p>Target architecture, migration path, risks and a cost estimate you can take to your board. Fixed price for this stage, so the decision to continue is yours.</p>
+      </div>
+      <div class="stop-item reveal">
+        <span class="mono">Stop 3</span>
+        <h3>Build</h3>
+        <p>Short iterations, a demo every week, and code in your repository from day one. Your engineers pair with us so nothing is a black box.</p>
+      </div>
+      <div class="stop-item reveal">
+        <span class="mono">Stop 4</span>
+        <h3>Handover</h3>
+        <p>Documentation, runbooks and training for the team that inherits the system. Ongoing support is available, but never a condition.</p>
+      </div>
+    </div>
+  </section>
 
-                    <h3>From Startups to Enterprises</h3>
-                    <p>Based in London and serving businesses of all sizes—from early-stage startups to established enterprises. We understand the unique challenges at each stage and tailor our solutions to match your scale, budget, and growth trajectory.</p>
-                </div>
-                <div class="about__features">
-                    <ul class="feature__list">
-                        <li class="feature__item">
-                            <div class="feature__icon">✓</div>
-                            <div class="feature__text">
-                                <div class="feature__title">Rust & .NET Expertise</div>
-                                <div class="feature__desc">40% faster than Java, lower costs</div>
-                            </div>
-                        </li>
-                        <li class="feature__item">
-                            <div class="feature__icon">✓</div>
-                            <div class="feature__text">
-                                <div class="feature__title">Industry Specialization</div>
-                                <div class="feature__desc">FinTech, Crypto, E-commerce</div>
-                            </div>
-                        </li>
-                        <li class="feature__item">
-                            <div class="feature__icon">✓</div>
-                            <div class="feature__text">
-                                <div class="feature__title">Performance Engineering</div>
-                                <div class="feature__desc">10,000+ requests/sec capability</div>
-                            </div>
-                        </li>
-                        <li class="feature__item">
-                            <div class="feature__icon">✓</div>
-                            <div class="feature__text">
-                                <div class="feature__title">90-Day ROI Framework</div>
-                                <div class="feature__desc">Proven methodology for fast results</div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section class="wrap rule" id="about">
+    <div class="head reveal">
+      <h2>Who we are</h2>
+      <p>GRITMAX is a London consultancy of software architects and senior engineers. Small enough that the people you meet in discovery are the people who design and build.</p>
+    </div>
+    <div class="about">
+      <div class="bio reveal">
+        <p>Our background is backend engineering for financial, crypto and e‑commerce products: trading and market data infrastructure, pricing services, payment and ledger flows, order and inventory systems. We have built them on most of the mainstream stacks, and we are deliberately unattached to any of them. The right technology is the one your team can still run with confidence in three years.</p>
+        <p>Much of our work is technical upgrade: platforms that have outgrown their original design and need to change while still serving customers. We plan those migrations so releases keep shipping while the foundations move underneath.</p>
+        <p>We do not sell teams by the dozen. Each engagement is a small group of senior people who write the code they design and document it for the team that inherits it.</p>
+      </div>
+      <dl class="facts reveal">
+        <div><dt>Based</dt><dd>London, United Kingdom</dd></div>
+        <div><dt>Founded</dt><dd>2025</dd></div>
+        <div><dt>Team</dt><dd>Software architects and senior engineers</dd></div>
+        <div><dt>Practice</dt><dd>Software architecture, data-intensive applications, trading &amp; market data infrastructure</dd></div>
+        <div><dt>Cloud</dt><dd>AWS, Azure</dd></div>
+        <div><dt>Sectors</dt><dd>FinTech, Crypto, E‑commerce</dd></div>
+        <div><dt>Company</dt><dd>GRITMAX LIMITED, no. 16201947, England &amp; Wales</dd></div>
+      </dl>
+    </div>
+    <div class="principles">
+      <div class="reveal">
+        <span class="mono">Principle</span>
+        <h3>We build what we design.</h3>
+        <p>Architecture that nobody has to implement is a drawing. Ours ships.</p>
+      </div>
+      <div class="reveal">
+        <span class="mono">Principle</span>
+        <h3>We measure before we promise.</h3>
+        <p>Latency, cost and throughput are numbers. We agree them up front and report against them.</p>
+      </div>
+      <div class="reveal">
+        <span class="mono">Principle</span>
+        <h3>We leave your team able to run it.</h3>
+        <p>Success is the day you no longer need us, and know it.</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- FAQ Section -->
-    <section class="section">
-        <div class="container">
-            <div class="section__header">
-                <h2 class="section__title">Frequently Asked Questions</h2>
-                <p class="section__subtitle">Clear answers to help you make an informed decision</p>
-            </div>
-            <div style="max-width: 800px; margin: 0 auto;">
-                <div class="service__card" style="margin-bottom: 1.5rem;">
-                    <h3 class="service__title" style="font-size: 1.1rem; margin-bottom: 0.75rem;">How quickly can we see ROI?</h3>
-                    <p class="service__description">Most clients achieve positive ROI within 90 days. During the discovery phase, we provide a detailed projection of cost savings and efficiency gains specific to your processes, so you know exactly what to expect before committing.</p>
-                </div>
-                <div class="service__card" style="margin-bottom: 1.5rem;">
-                    <h3 class="service__title" style="font-size: 1.1rem; margin-bottom: 0.75rem;">What's the typical project timeline?</h3>
-                    <p class="service__description">Discovery and assessment take 2 weeks. Development and deployment typically range from 6-12 weeks depending on complexity. We use agile methodology with weekly updates, so you see progress continuously rather than waiting months for results.</p>
-                </div>
-                <div class="service__card" style="margin-bottom: 1.5rem;">
-                    <h3 class="service__title" style="font-size: 1.1rem; margin-bottom: 0.75rem;">Do you work with existing systems or build from scratch?</h3>
-                    <p class="service__description">Both. We can integrate with your existing technology stack through APIs and microservices, or build new systems when that's more cost-effective. Our assessment identifies the optimal approach for your specific situation.</p>
-                </div>
-                <div class="service__card" style="margin-bottom: 1.5rem;">
-                    <h3 class="service__title" style="font-size: 1.1rem; margin-bottom: 0.75rem;">What types of companies do you work with?</h3>
-                    <p class="service__description">We work with businesses of all sizes—from early-stage startups building their first product to established enterprises optimizing existing systems. We specialize in FinTech, Crypto, and E-commerce sectors, with expertise in regulatory compliance and data security.</p>
-                </div>
-                <div class="service__card" style="margin-bottom: 1.5rem;">
-                    <h3 class="service__title" style="font-size: 1.1rem; margin-bottom: 0.75rem;">What happens after deployment?</h3>
-                    <p class="service__description">We provide comprehensive training for your team and ongoing support. We monitor system performance, optimize based on real-world usage, and ensure you're achieving the projected cost savings and efficiency gains.</p>
-                </div>
-                <div class="service__card" style="margin-bottom: 1.5rem;">
-                    <h3 class="service__title" style="font-size: 1.1rem; margin-bottom: 0.75rem;">How do you ensure data security?</h3>
-                    <p class="service__description">We follow industry best practices for data security and privacy. All solutions are built with security-first architecture, encrypted data transmission, and compliance with UK data protection regulations including GDPR.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section class="wrap rule" id="sectors">
+    <div class="head reveal">
+      <h2>Where we work</h2>
+      <p>Three sectors where the backend is the product, and where a slow or fragile system costs money by the minute.</p>
+    </div>
+    <div class="sectors">
+      <div class="sector reveal">
+        <span class="mono">Sector</span>
+        <h3>FinTech</h3>
+        <p>Regulated environments where correctness, audit trails and uptime are not negotiable.</p>
+        <ul><li>Payment and ledger services</li><li>Pricing and risk engines</li><li>Reconciliation and reporting</li></ul>
+      </div>
+      <div class="sector reveal">
+        <span class="mono">Sector</span>
+        <h3>Crypto</h3>
+        <p>Markets that never close, with latency and throughput requirements that expose every weak design.</p>
+        <ul><li>Trading and order-flow systems</li><li>Market data pipelines</li><li>Exchange and wallet integrations</li></ul>
+      </div>
+      <div class="sector reveal">
+        <span class="mono">Sector</span>
+        <h3>E‑commerce</h3>
+        <p>Peak traffic, many integrations, and a catalogue that has to stay consistent across all of them.</p>
+        <ul><li>Order, inventory and fulfilment flows</li><li>Search and catalogue services</li><li>Marketplace and ERP integrations</li></ul>
+      </div>
+    </div>
+  </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section contact">
-        <div class="container">
-            <h2 class="contact__title">Ready to Transform Your Business?</h2>
-            <p class="contact__subtitle">Get your free automation assessment and discover exactly how much you can save.</p>
+  <section class="wrap contact" id="contact">
+    <p class="mono reveal">Next stop</p>
+    <h2 class="reveal">A conversation about what is slow, expensive or stuck.</h2>
+    <div class="email-row reveal">
+      <a class="email" href="mailto:contact@gritmax.co.uk" id="email">contact@gritmax.co.uk</a>
+      <button class="copy" id="copy" type="button">Copy email</button>
+    </div>
+    <div class="contact-grid reveal">
+      <p>Write a few lines about your system and what you would like to be different. One of our architects reads every message, and the first call is free and without obligation.</p>
+      <div class="links">
+        <a href="mailto:contact@gritmax.co.uk"><span class="mono">Email</span><span>contact@gritmax.co.uk</span></a>
+        <a href="#about"><span class="mono">Office</span><span>London, United Kingdom</span></a>
+        <a href="#approach"><span class="mono">First step</span><span>A two-week discovery, scoped in writing</span></a>
+      </div>
+    </div>
+  </section>
 
-            <div class="contact__details">
-                <div class="contact__item">
-                    <div class="contact__item-icon">🏢</div>
-                    <div class="contact__item-title">Location</div>
-                    <div class="contact__item-text">London, United Kingdom</div>
-                </div>
-                <div class="contact__item">
-                    <div class="contact__item-icon">📧</div>
-                    <div class="contact__item-title">Email</div>
-                    <div class="contact__item-text">
-                        <a href="mailto:contact@gritmax.co.uk">contact@gritmax.co.uk</a>
-                    </div>
-                </div>
-                <div class="contact__item">
-                    <div class="contact__item-icon">💼</div>
-                    <div class="contact__item-title">Specializations</div>
-                    <div class="contact__item-text">FinTech • Crypto • E-commerce</div>
-                </div>
-            </div>
-        </div>
-    </section>
+</main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p class="footer__text">© 2025 GRITMAX LTD. All rights reserved. | AI Automation & Software Solutions | London, UK</p>
-        </div>
-    </footer>
+<footer class="wrap">
+  <span>© 2026 GRITMAX LIMITED</span>
+  <span>Registered in England &amp; Wales · No. 16201947</span>
+  <span>London</span>
+</footer>
 
-    <script>
-        // Mobile Navigation Toggle
-        const navToggle = document.getElementById('navToggle');
-        const navMenu = document.getElementById('navMenu');
+<script>
+  (function () {
+    var root = document.documentElement;
+    var themeBtn = document.getElementById('theme');
+    function isDark() {
+      var t = root.getAttribute('data-theme');
+      if (t) return t === 'dark';
+      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    function label() { themeBtn.textContent = isDark() ? 'Light' : 'Dark'; }
+    try {
+      var saved = localStorage.getItem('gritmax-theme');
+      if (saved === 'dark' || saved === 'light') root.setAttribute('data-theme', saved);
+    } catch (e) {}
+    label();
+    themeBtn.addEventListener('click', function () {
+      var next = isDark() ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('gritmax-theme', next); } catch (e) {}
+      label();
+    });
 
-        navToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
+    var menu = document.getElementById('menu');
+    var nav = document.getElementById('nav');
+    menu.addEventListener('click', function () {
+      var open = nav.classList.toggle('open');
+      menu.setAttribute('aria-expanded', open ? 'true' : 'false');
+      menu.textContent = open ? 'Close' : 'Menu';
+    });
+    nav.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        nav.classList.remove('open');
+        menu.setAttribute('aria-expanded', 'false');
+        menu.textContent = 'Menu';
+      });
+    });
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const offset = 80; // Header height
-                    const targetPosition = target.offsetTop - offset;
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                    // Close mobile menu if open
-                    navMenu.classList.remove('active');
-                }
-            });
-        });
-    </script>
+    var copy = document.getElementById('copy');
+    var email = document.getElementById('email');
+    copy.addEventListener('click', function () {
+      var text = email.textContent;
+      function done() { copy.textContent = 'Copied'; setTimeout(function () { copy.textContent = 'Copy email'; }, 1800); }
+      function fallback() {
+        var r = document.createRange(); r.selectNodeContents(email);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        copy.textContent = 'Selected';
+        setTimeout(function () { copy.textContent = 'Copy email'; }, 1800);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } else { fallback(); }
+    });
+
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var line = document.getElementById('line');
+    if (reduce || !('IntersectionObserver' in window)) {
+      document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+      line.classList.add('go');
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          en.target.classList.add(en.target === line ? 'go' : 'in');
+          io.unobserve(en.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    io.observe(line);
+  })();
+</script>
 </body>
 </html>
